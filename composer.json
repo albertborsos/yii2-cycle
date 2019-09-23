@@ -1,0 +1,39 @@
+{
+    "name": "albertborsos/yii2-cycle",
+    "description": "Cycle ORM support for Yii 2.0",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Albert Borsos",
+            "email": "hello@borsosalbert.hu"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "spiral/core": "^1.2",
+        "cycle/orm": "^1.1"
+    },
+    "require-dev": {
+        "codeception/codeception": "~3.0",
+        "codeception/verify": "~1.0",
+        "codeception/specify": "~1.0",
+        "mito/yii2-coding-standards": "~2.0.0@beta"
+    },
+    "extra": {
+        "bootstrap": "albertborsos\\cycle\\Bootstrap"
+    },
+    "autoload": {
+        "psr-4": {
+            "albertborsos\\cycle\\": "src",
+            "albertborsos\\cycle\\tests\\": "tests"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
