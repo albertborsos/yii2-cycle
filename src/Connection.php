@@ -34,6 +34,14 @@ class Connection extends \yii\base\Component
      * @var array
      */
     public $schema;
+
+    /**
+     * Configure `db` component for modules which are using it. e.g. Gii
+     *
+     * @var bool
+     */
+    public $setDbComponent = false;
+
     /**
      * Default connection driver, if it is null, then it tries to read from DSN string.
      * @var string
