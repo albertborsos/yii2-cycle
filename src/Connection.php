@@ -110,6 +110,10 @@ class Connection extends \yii\base\Component
         $this->orm = $this->orm->withSchema(new \Cycle\ORM\Schema($this->schema));
     }
 
+    public function cleanHeap()
+    {
+        return $this->orm->getHeap()->clean();
+    }
 
     private function getDriver()
     {
