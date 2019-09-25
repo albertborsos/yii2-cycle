@@ -18,7 +18,7 @@ class Factory
         ];
     }
 
-    public static function relation($type, $target, $load, $innerKey, $outerKey)
+    public static function relation($type, $target, $innerKey, $outerKey, $load = null)
     {
         return [
             \Cycle\ORM\Relation::TYPE =>  $type,
