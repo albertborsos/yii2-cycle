@@ -4,7 +4,7 @@ namespace albertborsos\cycle;
 
 class Factory
 {
-    public static function schema(string $entityClass, string $table, string $primaryKey, array $columns, array $typeCast, array $relations)
+    public static function schema(string $entityClass, string $table, $primaryKey, array $columns, array $typeCast, array $relations)
     {
         return [
             \Cycle\ORM\Schema::ENTITY => $entityClass,

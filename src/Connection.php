@@ -6,6 +6,7 @@ use Cycle\ORM\Factory;
 use Cycle\ORM\ORM;
 use Spiral\Database\Config\DatabaseConfig;
 use Spiral\Database\DatabaseManager;
+use yii\base\InvalidConfigException;
 
 class Connection extends \yii\base\Component
 {
@@ -85,6 +86,7 @@ class Connection extends \yii\base\Component
 
     public function init()
     {
+        $this->checkRequiredProperties();
         $this->initializeConfig();
         $this->initializeOrm();
     }
@@ -98,11 +100,11 @@ class Connection extends \yii\base\Component
         $this->config = [
             'default' => 'default',
             'databases' => [
-                'default' => ['connection' => $this->getDriver()]
+                'default' => ['connection' => $this->getDriverName()]
             ],
             'connections' => [
-                $this->getDriver() => [
-                    'driver' => $this->driverMap[$this->getDriver()],
+                $this->getDriverName() => [
+                    'driver' => $this->driverMap[$this->getDriverName()],
                     'connection' => $this->dsn,
                     'username' => $this->username,
                     'password' => $this->password,
@@ -123,7 +125,7 @@ class Connection extends \yii\base\Component
         return $this->orm->getHeap()->clean();
     }
 
-    private function getDriver()
+    public function getDriverName()
     {
         if (empty($this->driver)) {
             if (($pos = strpos($this->dsn, ':')) !== false) {
@@ -132,5 +134,12 @@ class Connection extends \yii\base\Component
         }
 
         return $this->driver;
+    }
+
+    protected function checkRequiredProperties()
+    {
+        if (empty($this->dsn)) {
+            throw new InvalidConfigException('Connection::dsn cannot be empty.');
+        }
     }
 }
