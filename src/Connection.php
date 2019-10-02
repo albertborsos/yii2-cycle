@@ -41,7 +41,7 @@ class Connection extends \yii\base\Component
      *
      * @var bool
      */
-    public $setDbComponent = false;
+    public $setDbComponent = true;
 
     /**
      * Default connection driver, if it is null, then it tries to read from DSN string.

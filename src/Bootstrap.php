@@ -35,7 +35,7 @@ class Bootstrap implements BootstrapInterface
      */
     protected function setDbComponent($app): void
     {
-        if (ArrayHelper::getValue($app->getComponents(), 'cycle.setDbComponent', false) === false) {
+        if (ArrayHelper::getValue($app->getComponents(), 'cycle.setDbComponent', true) === false) {
             return;
         }
 
@@ -45,6 +45,7 @@ class Bootstrap implements BootstrapInterface
                 'dsn' => ArrayHelper::getValue($app->getComponents(), 'cycle.dsn'),
                 'username' => ArrayHelper::getValue($app->getComponents(), 'cycle.username'),
                 'password' => ArrayHelper::getValue($app->getComponents(), 'cycle.password'),
+                'charset' => 'utf8',
             ],
         ]);
     }
