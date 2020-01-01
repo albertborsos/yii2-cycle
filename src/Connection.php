@@ -84,6 +84,9 @@ class Connection extends \yii\base\Component
         return $this->orm;
     }
 
+    /**
+     * @throws InvalidConfigException
+     */
     public function init()
     {
         $this->checkRequiredProperties();
@@ -100,7 +103,7 @@ class Connection extends \yii\base\Component
         $this->config = [
             'default' => 'default',
             'databases' => [
-                'default' => ['connection' => $this->getDriverName()]
+                'default' => ['connection' => $this->getDriverName()],
             ],
             'connections' => [
                 $this->getDriverName() => [
@@ -108,8 +111,8 @@ class Connection extends \yii\base\Component
                     'connection' => $this->dsn,
                     'username' => $this->username,
                     'password' => $this->password,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 
@@ -136,6 +139,9 @@ class Connection extends \yii\base\Component
         return $this->driver;
     }
 
+    /**
+     * @throws InvalidConfigException
+     */
     protected function checkRequiredProperties()
     {
         if (empty($this->dsn)) {
